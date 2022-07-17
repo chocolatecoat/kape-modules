@@ -1,0 +1,19 @@
+Description: Hayabusa
+Category: EventLogs
+Author: Terryn Valikodath
+Version: 1.0
+Id: 88d03407-5c1f-49d2-978f-4abaf35795e2
+BinaryUrl: https://github.com/Yamato-Security/hayabusa
+ExportFormat: csv
+
+Processors:
+    -
+        Executable: hayabusa\hayabusa.exe
+        CommandLine: -d %sourceDirectory%\Windows\System32\winevt\Logs --utc -F --quiet -o %destinationDirectory%\hayabusa_evt_timeline.csv
+        ExportFormat: csv
+
+# Documentation
+# 1. Make sure you copy the hayabusa folder to the \bin\
+# 2. Label the directory "hayabusa" and the executable "hayabusa.exe"
+# 3. Intended to be run from the "C" folder of a triage collection
+# 4. If you just have the evtx files, you may need to adjust the "-d" in the command line above to specify or leave at %sourceDirectory%
